@@ -1,7 +1,8 @@
+import EsParBit
 
 {-
 Función: cetes
-Descripción: Recibe un monto inicial y dependiendo el plazo en dias o meses, devuelve un monto final
+Descripción: Recibe un monto inicial y devuelve un monto final dependiendo del plazo en dias o meses. 
 Uso: cetes 100 (Dias 28) = 100.47366
 UsoDos: cetes 100 (Meses 1) = 100.47366
 -}
@@ -28,7 +29,7 @@ cetes x y =
 
 {-
 Función: mensajeCetes
-Descripción: Pide ingresar monto y un plazo, posteriormente devuelve el plazo, el rendimiento bruto obtenido y el monto total
+Descripción: Pide ingresar monto y un plazo, posteriormente devuelve el plazo, el rendimiento bruto obtenido y el monto total.
 Uso: mensajeCetes 100 (Dias 182) = 
 "Despues de 182 dias, obtuve 3.4933891 de rendimiento bruto sin asumir ningun riesgo crediticio. El monto total de mi inversion es de 103.49339."
 
@@ -66,3 +67,32 @@ Uso: negativos [1,2,-3,5 2,-6] = 2
 
 negativos :: [Int] -> Int
 negativos xs = length [ x | x <- xs, x < 0]
+
+{-
+Función: soloPares
+Descripción: Recibe una lista y devuelve otra con los números que sean par
+Uso: soloPares [1..20] = [2,4,6,8,10,12,14,16,18,20]
+-}
+
+soloPares :: [Int] -> [Int]
+soloPares xs = [x | x <- xs, esParBit x]
+
+{-
+Función: primos
+Descripción: Devuelve los números de la lista que son primos
+Uso: primos [1..20] = [2,3,5,7,11,13,17,19]
+-}
+
+primos :: [Int] -> [Int]
+primos xs = [x | x <- xs, length [n | n <- [1..x], mod x n == 0] == 2 ]
+
+{-
+Función: coprimos
+Descripción: Recibe un entero y devuelve una lista con los coprimos del entero
+Uso: coprimos 20 = [1,3,7,9,11,13,17,19]
+-}
+
+coprimos :: Int -> [Int]
+coprimos n = [x | x <- [1..n], length [y | y <- [1..x], mod x y == 0, mod n y == 0] == 1]
+
+
